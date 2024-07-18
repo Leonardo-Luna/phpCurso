@@ -10,7 +10,7 @@ if(isset($_GET["archivo"]))
     //Traigo el nombre del archivo
     $archivo = $_GET["archivo"];
 
-    if($_GET["accion"] == "Guardar")
+    if(isset($_GET["accion"]) and $_GET["accion"] == "Guardar")
     {
         //Modificar contenido de un archivo
         file_put_contents($archivo, $_GET["texto"]);
@@ -19,18 +19,19 @@ if(isset($_GET["archivo"]))
 }
 
 //Leer ontenido de un archivo
-$texto = file_get_contents($archivo);
+$mensaje = "";
+$texto = @file_get_contents($archivo) or $mensaje = "Archivo no encontrado, se creará.";
 
 ?>
 
 <h3> Editar archivo de texto </h3>
-<h4> En caso de no existir se creará </h4>
 
 <form>
     <label>Nombre del archivo:</label>
     <input type="text" name="archivo" value="<?=$archivo?>" />
     <br/> <br/>
-    <input type="submit" value="Cargar contenido" name="accion" />
+    <input type="submit" value="Cargar contenido" name="cargar" />
+    <output> <?=$mensaje?> </output>
     <br/> <br/>
     <textarea name="texto"><?=$texto?></textarea>
     <br/><br/>
