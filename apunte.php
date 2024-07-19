@@ -1,7 +1,7 @@
 <?php
 
                                             # Variables
-# Básicas
+# Tipos básicos
 $null = null;
 
 $boolean = true;
@@ -59,6 +59,7 @@ function imprimirColor(Color $color){
 
 echo "<br/>" . imprimirColor(Color::Rojo);
 
+# Iterables
 function numeros(): iterable {
     yield 1;
     yield 2;
@@ -69,6 +70,58 @@ function numeros(): iterable {
 $numeros = numeros();
 foreach($numeros as $elemento) {
     echo "<br/>" . $elemento;
+}
+
+                                        # Estructuras de control
+
+# if-elseif-else
+echo "<br/>";
+$nombre = "Leo";
+if($nombre == "Leo") {
+    echo "if";
+}
+elseif($nombre == "Luna"){
+    echo "elseif";
+}
+else {
+    echo "else";
+}
+
+# while
+$numero = 0;
+while($numero <= 5) {
+    echo "<br/> while : $numero";
+    $numero++;
+}
+
+# do-while
+$numero = 5;
+do {
+    echo "<br/> do-while : $numero";
+    $numero--;
+} while($numero >= 0);
+
+# for
+for($i = 0; $i <= 5; $i++) {
+    echo "<br/> for : $i";
+}
+
+# foreach
+$arreglo = array("Perro", "Gato", "Paloma", "Ratón");
+foreach($arreglo as $item) {
+    echo "<br/> foreach : $item";
+}
+
+# switch
+echo "<br/>";
+$nombre = "Leo";
+switch($nombre) {
+    case "Leo":
+        echo "switch - case : 'Leo'";
+        break;
+    case "Pepe":
+        echo "switch - case : 'Pepe'";
+        break;
 }
 
 ?>
